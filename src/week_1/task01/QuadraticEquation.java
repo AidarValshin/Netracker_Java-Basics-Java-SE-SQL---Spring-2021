@@ -9,12 +9,35 @@ public class QuadraticEquation {
     private final double b;
     private final double c;
 
+    //конструктор, в аргументах коэффициенты Уравнение вида: a*x^2 + b*x + c = 0
     public QuadraticEquation(double a, double b, double c) {
         this.a = a;
         this.b = b;
         this.c = c;
     }
 
+
+// главный метод для решения уравнения
+    public double[] solve() {
+        double discriminant = Discriminant.find(a, b, c);
+        if (discriminant > 0) {
+            double[] result = new double[2];
+            result[0] = (-b + Math.sqrt(discriminant)) / (2 * a);
+            result[1] = (-b - Math.sqrt(discriminant)) / (2 * a);
+            return result;
+        } else if (discriminant == 0) {
+            return new double[]{(-b) / (2 * a)};
+        }
+        return null;
+    }
+
+    //Lля вычисления дискриминанта
+    private static class Discriminant {
+        public static double find(double a, double b, double c) {
+            return b * b - 4 * a * c;
+        }
+
+    }
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
             System.out.println("Уравнение вида: a*x^2 + b*x + c = 0");
@@ -32,26 +55,6 @@ public class QuadraticEquation {
             System.out.println(Arrays.toString(new QuadraticEquation(a, b, c).solve()));
 
         }
-    }
-
-    public double[] solve() {
-        double discriminant = Discriminant.find(a, b, c);
-        if (discriminant > 0) {
-            double[] result = new double[2];
-            result[0] = (-b + Math.sqrt(discriminant)) / (2 * a);
-            result[1] = (-b - Math.sqrt(discriminant)) / (2 * a);
-            return result;
-        } else if (discriminant == 0) {
-            return new double[]{(-b) / (2 * a)};
-        }
-        return null;
-    }
-
-    private static class Discriminant {
-        public static double find(double a, double b, double c) {
-            return b * b - 4 * a * c;
-        }
-
     }
 }
 
