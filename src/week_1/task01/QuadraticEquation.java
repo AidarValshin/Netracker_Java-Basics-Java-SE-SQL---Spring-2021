@@ -40,7 +40,7 @@ public class QuadraticEquation {
     }
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
-            System.out.println("Уравнение вида: a*x^2 + b*x + c = 0");
+            System.out.println("Ввод уравнения вида: a*x^2 + b*x + c = 0");
             Scanner sc = new Scanner(System.in);
             System.out.print("Введите a: ");
             double a = sc.nextDouble();
@@ -51,7 +51,7 @@ public class QuadraticEquation {
             System.out.print("Введите c: ");
             double c = sc.nextDouble();
             System.out.println();
-            System.out.print("Результаты: ");
+            System.out.print("Результаты вычисления: ");
             System.out.println(Arrays.toString(new QuadraticEquation(a, b, c).solve()));
 
         }
